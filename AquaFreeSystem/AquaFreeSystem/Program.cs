@@ -1,3 +1,5 @@
+using AquaFreeSystem.Context;
+using Microsoft.EntityFrameworkCore;
 namespace AquaFreeSystem
 {
     public class Program
@@ -8,6 +10,8 @@ namespace AquaFreeSystem
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<MiContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("CadenaConexion")));
 
             var app = builder.Build();
 
